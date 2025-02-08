@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo XYZ</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .form-container { max-width: 300px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; }
+        button { background: green; color: white; border: none; padding: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Modelo XYZ</h2>
+        <label>Color:</label>
+        <select id="color">
+            <option>Rojo</option>
+            <option>Negro</option>
+            <option>Blanco</option>
+        </select>
+        <br><br>
+        <label>Talla:</label>
+        <select id="talla">
+            <option>38</option>
+            <option>39</option>
+            <option>40</option>
+        </select>
+        <br><br>
+        <p><strong>Precio:</strong> $150,000</p>
+        <button onclick="añadirAlCarrito()">Añadir al carrito</button>
+    </div>
+
+    <script>
+        function añadirAlCarrito() {
+            let producto = {
+                modelo: "Modelo XYZ",
+                color: document.getElementById("color").value,
+                talla: document.getElementById("talla").value,
+                precio: 150000
+            };
+
+            let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+            carrito.push(producto);
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+
+            alert("Producto añadido al carrito.");
+        }
+    </script>
+
+</body>
+</html>
